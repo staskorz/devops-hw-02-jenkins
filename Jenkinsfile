@@ -20,7 +20,7 @@ pipeline {
     }
 
     post {
-        always {
+        failure {
             step(step([$class: 'Mailer',
                 notifyEveryUnstableBuild: true,
                 recipients: "${params.mail}",
