@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    parameters {
+        string(defaultValue: 'user@example.com', description: 'Recipient mail', name: 'mail')
+    }
+
     stages {
         stage('Print "Hello World"') {
             steps {
@@ -10,14 +14,15 @@ pipeline {
 
         stage('Create file') {
             steps {
-                sh "date > /tmp/jenkins_was_here"
+                //sh "date > /tmp/jenkins_was_here"
+                sh "exit 1"
             }
         }
     }
 
     post {
         failure {
-            mail to: 'john@example.com',
+            mail to: ${params.mail},
             subject: 'The Pipeline failed :(',
             body: 'Something went wrong...'
         }
