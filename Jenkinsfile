@@ -14,8 +14,8 @@ pipeline {
 
         stage('Create file') {
             steps {
-                //sh "date > /tmp/jenkins_was_here"
-                sh "exit 1"
+                sh "date > /tmp/jenkins_was_here"
+                //sh "exit 1"
             }
         }
     }
