@@ -22,9 +22,9 @@ pipeline {
 
     post {
         failure {
-            mail to: '${params.mail}',
+            mail (to: '${params.mail}',
             subject: 'The Pipeline failed :(',
-            body: 'Something went wrong...'
+            body: 'Something went wrong...')
         }
     }
 }
