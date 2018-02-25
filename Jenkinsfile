@@ -9,7 +9,7 @@ stages {
 
     stage('Create file') {
         steps {
-            sh "echo $(date) > /tmp/jenkins_was_here"
+            sh "date > /tmp/jenkins_was_here"
         }
     }
 }
