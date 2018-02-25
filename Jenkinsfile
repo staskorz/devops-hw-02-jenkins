@@ -22,9 +22,10 @@ pipeline {
 
     post {
         always {
-            mail (to: '${params.mail}',
-            subject: 'The Pipeline failed :(',
-            body: 'Something went wrong...')
+            step(step([$class: 'Mailer',
+                notifyEveryUnstableBuild: true,
+                recipients: '${params.mail}',
+                sendToIndividuals: true]))
         }
     }
 }
