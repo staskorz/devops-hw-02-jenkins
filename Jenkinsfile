@@ -17,7 +17,7 @@ stages {
 post {
     failure {
         mail to: 'john@example.com',
-             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-             body: "Something is wrong with ${env.BUILD_URL}"
+             subject: 'The Pipeline failed :(',
+             body: 'Something went wrong...'
     }
 }
