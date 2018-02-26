@@ -14,17 +14,19 @@ pipeline {
 
         stage('Create file') {
             steps {
-                sh 'date > /tmp/jenkins_was_here'
+                //sh 'date > /tmp/jenkins_was_here'
+                sh 'exit 1'
             }
         }
     }
 
     post {
         failure {
-            step(step([$class: 'Mailer',
-                notifyEveryUnstableBuild: true,
-                recipients: "${params.mail}",
-                sendToIndividuals: true]))
+           step {
+               mail(to: "${params.mail}",
+               subject: 'Job failed',
+               body: 'Job failed, too bad :(')
+           }
         }
     }
 }
