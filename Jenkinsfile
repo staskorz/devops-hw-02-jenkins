@@ -1,9 +1,9 @@
 pipeline {
     agent any
 
-    parameters {
-        string(defaultValue: 'user@example.com', description: 'Recipient mail', name: 'mail')
-    }
+    // parameters {
+    //     string(defaultValue: 'user@example.com', description: 'Recipient mail', name: 'mail')
+    // }
 
     stages {
         stage('Print "Hello World"') {
@@ -23,9 +23,10 @@ pipeline {
     post {
         always {
             mail(
-                to: "${params.mail}",
-                subject: 'Job failed',
-                body: 'Job failed, too bad :('
+                // to: "${params.mail}",
+                to: "${env.NOTIFY_EMAIL}",
+                subject: "Job '${env.JOB_NAME}' status '${currentBuild.currentResult}'",
+                body: "Job '${env.JOB_NAME}' complete with status '${currentBuild.currentResult}'"
             )
         }
     }
