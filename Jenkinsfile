@@ -22,11 +22,13 @@ pipeline {
 
     post {
         failure {
-           step {
-               mail(to: "${params.mail}",
-               subject: 'Job failed',
-               body: 'Job failed, too bad :(')
-           }
+            step(
+                mail(
+                    to: "${params.mail}",
+                    subject: 'Job failed',
+                    body: 'Job failed, too bad :('
+                )
+           )
         }
     }
 }
