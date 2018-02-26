@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    // parameters {
-    //     string(defaultValue: 'user@example.com', description: 'Recipient mail', name: 'mail')
-    // }
-
     stages {
         stage('Print "Hello World"') {
             steps {
@@ -15,7 +11,7 @@ pipeline {
         stage('Create file') {
             steps {
                 sh 'date > /tmp/jenkins_was_here'
-                sh 'exit 1'
+                // sh 'exit 1'
             }
         }
     }
