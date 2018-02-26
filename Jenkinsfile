@@ -21,14 +21,12 @@ pipeline {
     }
 
     post {
-        failure {
-            step(
-                mail(
-                    to: "${params.mail}",
-                    subject: 'Job failed',
-                    body: 'Job failed, too bad :('
-                )
-           )
+        always {
+            mail(
+                to: "${params.mail}",
+                subject: 'Job failed',
+                body: 'Job failed, too bad :('
+            )
         }
     }
 }
